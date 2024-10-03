@@ -1,14 +1,16 @@
 import { createContext, useContext, useState } from 'react';
 
 import createRandomPost from './utils/createRandomPost';
+import { useSearch } from './SearchContext';
 
 const PostContext = createContext();
 
 function PostProvider({ children }) {
+  const { searchQuery } = useSearch();
+
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 30 }, () => createRandomPost())
   );
-  const [searchQuery, setSearchQuery] = useState('');
 
   // Derived state. These are the posts that will actually be displayed
   const searchedPosts =
@@ -34,8 +36,6 @@ function PostProvider({ children }) {
         posts: searchedPosts,
         onAddPost: handleAddPost,
         onClearPosts: handleClearPosts,
-        searchQuery,
-        setSearchQuery,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ import Main from './components/Main';
 import Archive from './components/Archive';
 import Footer from './components/Footer';
 import DarkModeButton from './components/DarkModeButton';
+import { SearchProvider } from './SearchContext';
 
 function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);
@@ -22,12 +23,14 @@ function App() {
   return (
     <section>
       <DarkModeButton isFakeDark={isFakeDark} setIsFakeDark={setIsFakeDark} />
-      <PostProvider>
-        <Header />
-        <Main />
-        <Archive />
-        <Footer />
-      </PostProvider>
+      <SearchProvider>
+        <PostProvider>
+          <Header />
+          <Main />
+          <Archive />
+        </PostProvider>
+      </SearchProvider>
+      <Footer />
     </section>
   );
 }
