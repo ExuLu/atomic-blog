@@ -5,6 +5,8 @@ import { PostProvider } from './PostContext';
 import Header from './components/Header';
 import Main from './components/Main';
 import Archive from './components/Archive';
+import Footer from './components/Footer';
+import DarkModeButton from './components/DarkModeButton';
 
 function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);
@@ -19,12 +21,7 @@ function App() {
 
   return (
     <section>
-      <button
-        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-        className='btn-fake-dark-mode'
-      >
-        {isFakeDark ? '☀️' : '🌙'}
-      </button>
+      <DarkModeButton isFakeDark={isFakeDark} setIsFakeDark={setIsFakeDark} />
       <PostProvider>
         <Header />
         <Main />
@@ -33,10 +30,6 @@ function App() {
       </PostProvider>
     </section>
   );
-}
-
-function Footer() {
-  return <footer>&copy; by The Atomic Blog ✌️</footer>;
 }
 
 export default App;
