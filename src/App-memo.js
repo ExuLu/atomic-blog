@@ -46,7 +46,7 @@ function App() {
       show: false,
       title: `Post archive in addition to ${posts.length} main posts`,
     }),
-    [posts]
+    [posts.length]
   );
 
   return (
